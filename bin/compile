@@ -14,7 +14,7 @@ mkdir -p ${cache}
 
 io_version="2013.12.04"
 io_tar_dir="io-2013.12.04"
-io_url="https://github.com/stevedekorte/io/archive/${io_version}.tar.gz"
+io_url="https://github.com/stevedekorte/io/archive/io-${io_version}.tar.gz"
 io_file="io-${io_version}.tar.gz"
 
 cmake_version="2.8.6"
