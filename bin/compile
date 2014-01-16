@@ -30,7 +30,7 @@ libe_url="http://cloud.github.com/downloads/libevent/libevent/${libe_file}"
 pcre_version="8.34"
 pcre_dir="pcre-${pcre_version}"
 pcre_file="${pcre_dir}.tar.bz2"
-pcre_url="http://downloads.sourceforge.net/project/pcre/pcre/8.34/${pcre_file}"
+pcre_url="http://kent.dl.sourceforge.net/project/pcre/pcre/${pcre_version}/${pcre_file}"
 
 cache_target=${cache}/${io_file}
 build_target=${build}/.local
