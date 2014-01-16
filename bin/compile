@@ -27,6 +27,11 @@ libe_dir="libevent-${libe_version}-stable"
 libe_file="${libe_dir}.tar.gz"
 libe_url="http://cloud.github.com/downloads/libevent/libevent/${libe_file}"
 
+pcre_version="8.34"
+pcre_dir="pcre-${pcre_version}"
+pcre_file="${pcre_dir}.tar.bz2"
+pcre_url="http://downloads.sourceforge.net/project/pcre/pcre/8.34/${pcre_file}"
+
 cache_target=${cache}/${io_file}
 build_target=${build}/.local
 target=/app/.local
@@ -36,12 +41,23 @@ if [ ! -f ${cache_target} ]; then
   cd $build
 
   # Download all files first
+  curl -s ${pcre_url} > ${pcre_file}
+  tar zxf ${pcre_file}
   curl -s ${cmake_url} > ${cmake_file}
   tar zxf ${cmake_file}
   curl -s ${libe_url} > ${libe_file}
   tar zxf ${libe_file}
   curl -s ${io_url} > ${io_file}
   tar zxf ${io_file}
+
+  echo "Compiling PCRE v${pcre_version}..." | indent
+  #Compile PCRE
+  cd ${pcre_dir}
+  ./configure --disable-dependency-tracking --prefix=${target} --enable-utf8 --enable-unicode-properties --enable-pcregrep-libz --enable-pcregrep-libbz2 --enable-jit | indent
+  make | indent
+  make test | indent
+  make install | indent
+  cd ..
 
   echo "Compiling cmake v${cmake_version}..." | indent
   #Compile cmake
