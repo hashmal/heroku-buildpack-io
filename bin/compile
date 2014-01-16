@@ -42,7 +42,7 @@ if [ ! -f ${cache_target} ]; then
 
   # Download all files first
   curl -s ${pcre_url} > ${pcre_file}
-  tar zxf ${pcre_file}
+  tar xjf ${pcre_file}
   curl -s ${cmake_url} > ${cmake_file}
   tar zxf ${cmake_file}
   curl -s ${libe_url} > ${libe_file}
